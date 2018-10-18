@@ -1,0 +1,16 @@
+﻿@using Stimulsoft.Report.Mvc;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Register Data for Dashboard Template</h2>
+
+@Html.StiNetCoreViewer(new StiNetCoreViewerOptions()
+{
+    Actions =
+    {
+        GetReport = "GetReport",
+        ViewerEvent = "ViewerEvent"
+    }
+})
