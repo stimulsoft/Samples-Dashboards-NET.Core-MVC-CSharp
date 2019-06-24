@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Stimulsoft.Dashboard.Components;
 using Stimulsoft.Report;
+using Stimulsoft.Report.Dashboard.Styles;
 using Stimulsoft.Report.Mvc;
+using System.Drawing;
 using System.IO;
 
 namespace Show_Dashboard_in_the_Viewer.Controllers
@@ -34,6 +37,15 @@ namespace Show_Dashboard_in_the_Viewer.Controllers
             }
 
             ViewBag.FileNames = fileNames;
+
+            var fileName = RouteData.Values["id"].ToString();
+            var report = new StiReport();
+            report.Load(StiNetCoreHelper.MapPath(this, $"Dashboards/{fileName}.mrt"));
+
+            var dashboard = report.Pages[0] as StiDashboard;
+            ViewBag.ForeHtmlColor = ColorTranslator.ToHtml(dashboard != null ? StiDashboardStyleHelper.GetForeColor(dashboard) : Color.Black);
+            ViewBag.BackHtmlColor = ColorTranslator.ToHtml(dashboard != null ? StiDashboardStyleHelper.GetDashboardBackColor(dashboard, true) : Color.White);
+            ViewBag.BackColor = dashboard != null ? StiDashboardStyleHelper.GetDashboardBackColor(dashboard, true) : Color.White;
 
             return View();
         }
