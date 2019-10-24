@@ -21,8 +21,8 @@ namespace Edit_Dashboard_in_the_Designer.Controllers
 
         public IActionResult GetReport()
         {
-            // Create the report object
-            var report = new StiReport();
+            // Create the dashboard object
+            var report = StiReport.CreateNewDashboard();
 
             // Load dashboard template
             report.Load(StiNetCoreHelper.MapPath(this, "Dashboards/DashboardChristmas.mrt"));

@@ -10,7 +10,7 @@ namespace Runtime_Dashboard_Creation.Controllers
             return View();
         }
         
-        public IActionResult GetReport(string id)
+        public IActionResult GetReport()
         {
             var report = Helpers.Dashboard.CreateTemplate();
             return StiNetCoreViewer.GetReportResult(this, report);

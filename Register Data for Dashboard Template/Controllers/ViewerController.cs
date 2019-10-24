@@ -20,12 +20,12 @@ namespace Show_Dashboard_in_the_Viewer.Controllers
             return View();
         }
         
-        public IActionResult GetReport(string id)
+        public IActionResult GetReport()
         {
-            // Create new report
-            var report = new StiReport();
+            // Create new dashboard
+            var report = StiReport.CreateNewDashboard();
 
-            // Load report template
+            // Load dashboard template
             report.Load(StiNetCoreHelper.MapPath(this, "Dashboards/Dashboard.mrt"));
 
             // Load a JSON file
@@ -35,7 +35,7 @@ namespace Show_Dashboard_in_the_Viewer.Controllers
             var json = StiJsonConnector.Get();
             var dataSet = json.GetDataSet(new StiJsonOptions(jsonBytes));
 
-            // Remove all connections from the report template
+            // Remove all connections from the dashboard template
             report.Dictionary.Databases.Clear();
 
             // Register DataSet object

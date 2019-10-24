@@ -39,7 +39,7 @@ namespace Show_Dashboard_in_the_Viewer.Controllers
             ViewBag.FileNames = fileNames;
 
             var fileName = RouteData.Values["id"].ToString();
-            var report = new StiReport();
+            var report = StiReport.CreateNewDashboard();
             report.Load(StiNetCoreHelper.MapPath(this, $"Dashboards/{fileName}.mrt"));
 
             var dashboard = report.Pages[0] as StiDashboard;
@@ -52,7 +52,7 @@ namespace Show_Dashboard_in_the_Viewer.Controllers
 
         public IActionResult GetReport(string id)
         {
-            var report = new StiReport();
+            var report = StiReport.CreateNewDashboard();
             report.Load(StiNetCoreHelper.MapPath(this, $"Dashboards/{id}.mrt"));
 
             return StiNetCoreViewer.GetReportResult(this, report);
