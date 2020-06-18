@@ -1,4 +1,4 @@
-# ASP.NET Core C# samples for Stimulsoft Dashboards.WEB
+# ASP.NET Core MVC C# samples for Stimulsoft Dashboards.WEB
 
 #### This repository contains the source code of the examples of usage Stimulsoft Dashboards.WEB product in the ASP.NET Core applications, using C# code and HTML5 components. This product and examples are compatible with .NET Core 2.0 and higher.
 
